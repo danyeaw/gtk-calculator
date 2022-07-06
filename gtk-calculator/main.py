@@ -14,28 +14,19 @@ class MainWindow(Gtk.ApplicationWindow):
         self.operand_b = None
         self.operator = None
 
-        self.builder = Gtk.Builder()
+        callback_mapping = {
+            "on_number_clicked": self.on_number_clicked,
+            "on_equal_clicked": self.on_equal_clicked,
+            "on_operator_clicked": self.on_operator_clicked,
+            "on_clear_clicked": self.on_clear_clicked,
+        }
+        self.builder = Gtk.Builder(callback_mapping)
         self.builder.add_from_file("layout.ui")
         grid = self.builder.get_object("grid")
         self.set_child(grid)
 
         self.number = self.builder.get_object("number")
         self.operator_text = self.builder.get_object("operator_text")
-
-        for num in range(9):
-            button = self.builder.get_object(f"button{num}")
-            button.connect("clicked", self.on_number_clicked)
-
-        operators = ("add", "subtract", "multiply", "divide")
-        for operator in operators:
-            operator_button = self.builder.get_object(f"button-{operator}")
-            operator_button.connect("clicked", self.on_operator_clicked)
-
-        equal_button = self.builder.get_object("equal_button")
-        equal_button.connect("clicked", self.on_equal_clicked)
-
-        clear_button = self.builder.get_object("clear_button")
-        clear_button.connect("clicked", self.on_clear_clicked)
 
     def on_number_clicked(self, button: Gtk.Button):
         number_clicked = button.get_label()

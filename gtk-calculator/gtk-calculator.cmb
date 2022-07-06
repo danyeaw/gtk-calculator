@@ -87,4 +87,15 @@
 	(1,70,90,"GtkGridLayoutChild","column","1",None,None,None,None),
 	(1,70,90,"GtkGridLayoutChild","row","2",None,None,None,None)
   </object_layout_property>
+  <object_signal>
+	(1,1,86,"GtkButton","clicked","on_equal_clicked",None,None,None,None,None),
+	(2,1,75,"GtkButton","clicked","on_number_clicked",None,None,None,None,None),
+	(3,1,80,"GtkButton","clicked","on_number_clicked",None,None,None,None,None),
+	(4,1,77,"GtkButton","clicked","on_number_clicked",None,None,None,None,None),
+	(5,1,82,"GtkButton","clicked","on_number_clicked",None,None,None,None,None),
+	(6,1,85,"GtkButton","clicked","on_number_clicked",None,None,None,None,None),
+	(7,1,88,"GtkButton","clicked","on_operator_clicked",None,None,None,None,None),
+	(8,1,87,"GtkButton","clicked","on_operator_clicked",None,None,None,None,None),
+	(9,1,83,"GtkButton","clicked","on_clear_clicked",None,None,None,None,None)
+  </object_signal>
 </cambalache-project>
