@@ -74,10 +74,6 @@ class MainWindow(Gtk.ApplicationWindow):
         self.operand_a = None
 
 
-def on_close(button: Gtk.Button):
-    app.quit()
-
-
 class MyApp(Adw.Application):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -89,5 +85,6 @@ class MyApp(Adw.Application):
 
 
 if __name__ == "__main__":
-    app = MyApp(application_id="com.example.GtkApplication")
-    app.run(sys.argv)
+    app = MyApp()
+    exit_status = app.run(sys.argv)
+    sys.exit(exit_status)
