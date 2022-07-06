@@ -10,53 +10,32 @@ class MainWindow(Gtk.ApplicationWindow):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.set_title("Calculator")
-        grid = Gtk.Grid()
-        self.set_child(grid)
         self.operand_a = None
         self.operand_b = None
         self.operator = None
 
-        number_box = Gtk.Box()
-        self.number = Gtk.Label()
-        number_box.append(self.number)
-        grid.attach(number_box, 0, 0, 3, 1)
+        self.builder = Gtk.Builder()
+        self.builder.add_from_file("layout.ui")
+        grid = self.builder.get_object("grid")
+        self.set_child(grid)
 
-        operator_text_box = Gtk.Box()
-        self.operator_text = Gtk.Label()
-        operator_text_box.append(self.operator_text)
-        grid.attach(operator_text_box, 0, 1, 3, 1)
+        self.number = self.builder.get_object("number")
+        self.operator_text = self.builder.get_object("operator_text")
 
-        # Add numeral buttons
         for num in range(9):
-            floor_div_3, modulo_3 = divmod(num, 3)
-            self.add_num_button(str(num), modulo_3, floor_div_3 + 2)
-        self.add_num_button("0", 1, 5)
+            button = self.builder.get_object(f"button{num}")
+            button.connect("clicked", self.on_number_clicked)
 
-        # Add operator buttons
-        operators = ("+", "-", "x", "/")
-        for operator_row, operator in enumerate(operators, start=2):
-            button = Gtk.Button.new_with_label(operator)
-            button.connect("clicked", self.on_operator_clicked)
-            button.show()
-            grid.attach(button, 3, operator_row, 1, 1)
+        operators = ("add", "subtract", "multiply", "divide")
+        for operator in operators:
+            operator_button = self.builder.get_object(f"button-{operator}")
+            operator_button.connect("clicked", self.on_operator_clicked)
 
-        # Add equal button
-        equal_button = Gtk.Button.new_with_label("=")
+        equal_button = self.builder.get_object("equal_button")
         equal_button.connect("clicked", self.on_equal_clicked)
-        equal_button.show()
-        grid.attach(equal_button, 2, 5, 1, 1)
 
-        # Add clear button
-        clear_button = Gtk.Button.new_with_label("C")
+        clear_button = self.builder.get_object("clear_button")
         clear_button.connect("clicked", self.on_clear_clicked)
-        clear_button.show()
-        grid.attach(clear_button, 0, 5, 1, 1)
-
-    def add_num_button(self, label: str, column: int, row: int):
-        button = Gtk.Button.new_with_label(label)
-        button.connect("clicked", self.on_number_clicked)
-        button.show()
-        self.get_child().attach(button, column, row, 1, 1)
 
     def on_number_clicked(self, button: Gtk.Button):
         number_clicked = button.get_label()
