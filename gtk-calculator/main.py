@@ -1,4 +1,6 @@
 import sys
+from typing import Union
+
 import gi
 
 gi.require_version('Gtk', '4.0')
@@ -10,7 +12,7 @@ class MainWindow(Gtk.ApplicationWindow):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.set_title("Calculator")
-        self.stack: list[int] = []
+        self.stack: list[Union[int, float]] = []
         self.value_complete: bool = False
 
         callback_mapping = {
