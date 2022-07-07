@@ -41,6 +41,7 @@
     <child>
       <object class="GtkButton" id="button2">
         <property name="label">2</property>
+        <signal name="clicked" handler="on_number_clicked"/>
         <layout>
           <property name="column">1</property>
           <property name="row">2</property>
@@ -50,6 +51,7 @@
     <child>
       <object class="GtkButton" id="button3">
         <property name="label">3</property>
+        <signal name="clicked" handler="on_number_clicked"/>
         <layout>
           <property name="column">2</property>
           <property name="row">2</property>
@@ -69,6 +71,7 @@
     <child>
       <object class="GtkButton" id="button4">
         <property name="label">4</property>
+        <signal name="clicked" handler="on_number_clicked"/>
         <layout>
           <property name="column">0</property>
           <property name="column-span">1</property>
@@ -80,6 +83,7 @@
     <child>
       <object class="GtkButton" id="button5">
         <property name="label">5</property>
+        <signal name="clicked" handler="on_number_clicked"/>
         <layout>
           <property name="column">1</property>
           <property name="row">3</property>
@@ -99,6 +103,7 @@
     <child>
       <object class="GtkButton" id="button-subtract">
         <property name="label">-</property>
+        <signal name="clicked" handler="on_operator_clicked"/>
         <layout>
           <property name="column">3</property>
           <property name="row">3</property>
@@ -108,6 +113,7 @@
     <child>
       <object class="GtkButton" id="button7">
         <property name="label">7</property>
+        <signal name="clicked" handler="on_number_clicked"/>
         <layout>
           <property name="column">0</property>
           <property name="row">4</property>
@@ -137,6 +143,7 @@
     <child>
       <object class="GtkButton" id="button-multiply">
         <property name="label">*</property>
+        <signal name="clicked" handler="on_operator_clicked"/>
         <layout>
           <property name="column">3</property>
           <property name="row">4</property>

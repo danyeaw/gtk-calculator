@@ -96,6 +96,13 @@
 	(6,1,85,"GtkButton","clicked","on_number_clicked",None,None,None,None,None),
 	(7,1,88,"GtkButton","clicked","on_operator_clicked",None,None,None,None,None),
 	(8,1,87,"GtkButton","clicked","on_operator_clicked",None,None,None,None,None),
-	(9,1,83,"GtkButton","clicked","on_clear_clicked",None,None,None,None,None)
+	(9,1,83,"GtkButton","clicked","on_clear_clicked",None,None,None,None,None),
+	(10,1,90,"GtkButton","clicked","on_number_clicked",None,None,None,None,None),
+	(11,1,89,"GtkButton","clicked","on_number_clicked",None,None,None,None,None),
+	(12,1,76,"GtkButton","clicked","on_number_clicked",None,None,None,None,None),
+	(13,1,81,"GtkButton","clicked","on_number_clicked",None,None,None,None,None),
+	(14,1,78,"GtkButton","clicked","on_number_clicked",None,None,None,None,None),
+	(15,1,84,"GtkButton","clicked","on_operator_clicked",None,None,None,None,None),
+	(16,1,79,"GtkButton","clicked","on_operator_clicked",None,None,None,None,None)
   </object_signal>
 </cambalache-project>
