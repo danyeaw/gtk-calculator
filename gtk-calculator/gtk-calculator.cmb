@@ -7,9 +7,9 @@
   <object>
 	(1,70,"GtkGrid","grid",None,None,None,None,None),
 	(1,71,"GtkBox",None,70,None,None,None,None),
-	(1,72,"GtkLabel","operator_text",71,None,None,None,None),
+	(1,72,"GtkLabel","last_in_display",71,None,None,None,None),
 	(1,73,"GtkBox",None,70,None,None,None,1),
-	(1,74,"GtkLabel","number",73,None,None,None,None),
+	(1,74,"GtkLabel","first_in_display",73,None,None,None,None),
 	(1,75,"GtkButton","button1",70,None,None,None,2),
 	(1,76,"GtkButton","button4",70,None,None,None,6),
 	(1,77,"GtkButton","button8",70,None,None,None,11),
@@ -21,7 +21,7 @@
 	(1,83,"GtkButton","clear_button",70,None,None,None,14),
 	(1,84,"GtkButton","button-multiply",70,None,None,None,13),
 	(1,85,"GtkButton","button0",70,None,None,None,15),
-	(1,86,"GtkButton","equal_button",70,None,None,None,16),
+	(1,86,"GtkButton","enter_button",70,None,None,None,16),
 	(1,87,"GtkButton","button-divide",70,None,None,None,17),
 	(1,88,"GtkButton","button-add",70,None,None,None,5),
 	(1,89,"GtkButton","button3",70,None,None,None,4),
@@ -36,10 +36,10 @@
 	(1,80,"GtkButton","label","6",None,None,None,None,None),
 	(1,81,"GtkButton","label","5",None,None,None,None,None),
 	(1,82,"GtkButton","label","9",None,None,None,None,None),
-	(1,83,"GtkButton","label","C",None,None,None,None,None),
+	(1,83,"GtkButton","label","🆑",None,None,None,None,None),
 	(1,84,"GtkButton","label","*",None,None,None,None,None),
 	(1,85,"GtkButton","label","0",None,None,None,None,None),
-	(1,86,"GtkButton","label","=",None,None,None,None,None),
+	(1,86,"GtkButton","label","↩️",None,None,None,None,None),
 	(1,87,"GtkButton","label","/",None,None,None,None,None),
 	(1,88,"GtkButton","label","+",None,None,None,None,None),
 	(1,89,"GtkButton","label","3",None,None,None,None,None),
@@ -88,7 +88,7 @@
 	(1,70,90,"GtkGridLayoutChild","row","2",None,None,None,None)
   </object_layout_property>
   <object_signal>
-	(1,1,86,"GtkButton","clicked","on_equal_clicked",None,None,None,None,None),
+	(1,1,86,"GtkButton","clicked","on_enter_clicked",None,None,None,None,None),
 	(2,1,75,"GtkButton","clicked","on_number_clicked",None,None,None,None,None),
 	(3,1,80,"GtkButton","clicked","on_number_clicked",None,None,None,None,None),
 	(4,1,77,"GtkButton","clicked","on_number_clicked",None,None,None,None,None),

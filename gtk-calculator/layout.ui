@@ -7,7 +7,7 @@
     <child>
       <object class="GtkBox">
         <child>
-          <object class="GtkLabel" id="operator_text"/>
+          <object class="GtkLabel" id="last_in_display"/>
         </child>
         <layout>
           <property name="column">0</property>
@@ -19,7 +19,7 @@
     <child>
       <object class="GtkBox">
         <child>
-          <object class="GtkLabel" id="number"/>
+          <object class="GtkLabel" id="first_in_display"/>
         </child>
         <layout>
           <property name="column">0</property>
@@ -145,7 +145,7 @@
     </child>
     <child>
       <object class="GtkButton" id="clear_button">
-        <property name="label">C</property>
+        <property name="label">🆑</property>
         <signal name="clicked" handler="on_clear_clicked"/>
         <layout>
           <property name="column">0</property>
@@ -164,9 +164,9 @@
       </object>
     </child>
     <child>
-      <object class="GtkButton" id="equal_button">
-        <property name="label">=</property>
-        <signal name="clicked" handler="on_equal_clicked"/>
+      <object class="GtkButton" id="enter_button">
+        <property name="label">↩️</property>
+        <signal name="clicked" handler="on_enter_clicked"/>
         <layout>
           <property name="column">2</property>
           <property name="row">5</property>

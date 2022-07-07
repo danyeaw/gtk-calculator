@@ -10,13 +10,12 @@ class MainWindow(Gtk.ApplicationWindow):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.set_title("Calculator")
-        self.operand_a = None
-        self.operand_b = None
-        self.operator = None
+        self.stack: list[int] = []
+        self.value_complete: bool = False
 
         callback_mapping = {
             "on_number_clicked": self.on_number_clicked,
-            "on_equal_clicked": self.on_equal_clicked,
+            "on_enter_clicked": self.on_enter_clicked,
             "on_operator_clicked": self.on_operator_clicked,
             "on_clear_clicked": self.on_clear_clicked,
         }
@@ -25,44 +24,37 @@ class MainWindow(Gtk.ApplicationWindow):
         grid = self.builder.get_object("grid")
         self.set_child(grid)
 
-        self.number = self.builder.get_object("number")
-        self.operator_text = self.builder.get_object("operator_text")
+        self.last_in_display = self.builder.get_object("last_in_display")
+        self.first_in_display = self.builder.get_object("first_in_display")
 
     def on_number_clicked(self, button: Gtk.Button):
-        number_clicked = button.get_label()
-        # First operand still being entered
-        if not self.operand_a:
-            self.number.set_text(self.number.get_text() + number_clicked)
-        elif not self.operator:
-            self.operator = self.operator_text.get_text()
-            self.number.set_text(f"{self.operand_a} {self.operator}")
-            self.operator_text.set_text(number_clicked)
-        else:
-            self.operator_text.set_text(self.operator_text.get_text() + number_clicked)
+        value = button.get_label()
+        if self.value_complete:
+            self.first_in_display.set_text(self.last_in_display.get_text())
+            self.last_in_display.set_text("")
+            self.value_complete = False
+        self.last_in_display.set_text(self.last_in_display.get_text() + value)
 
     def on_operator_clicked(self, button: Gtk.Button):
-        self.operator_text.set_text(button.get_label())
-        self.operand_a = int(self.number.get_text())
+        self.on_enter_clicked(button)
+        if len(self.stack) >= 2:
+            operand_b = self.stack.pop()
+            operand_a = self.stack.pop()
+            operator = button.get_label()
+            result = eval(f"{operand_a} {operator} {operand_b}")
+            self.first_in_display.set_text("")
+            self.stack.append(result)
+            self.last_in_display.set_text(str(result))
 
-    def on_equal_clicked(self, button: Gtk.Button):
-        self.operand_b = int(self.operator_text.get_text())
-        match self.operator:
-            case "+":
-                result = self.operand_a + self.operand_b
-            case "-":
-                result = self.operand_a - self.operand_b
-            case "x":
-                result = self.operand_a * self.operand_b
-            case _:
-                result = self.operand_a / self.operand_b
-        self.number.set_text(str(result))
-        self.operator_text.set_text("=")
+    def on_enter_clicked(self, button: Gtk.Button):
+        if current_value := self.last_in_display.get_text():
+            self.stack.append(int(current_value))
+            self.value_complete = True
 
     def on_clear_clicked(self, button: Gtk.Button):
-        self.number.set_text("")
-        self.operator_text.set_text("")
-        self.operator = None
-        self.operand_a = None
+        self.last_in_display.set_text("")
+        self.first_in_display.set_text("")
+        self.stack = []
 
 
 class MyApp(Adw.Application):
