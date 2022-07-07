@@ -185,7 +185,7 @@
     <child>
       <object class="GtkButton" id="enter_button">
         <property name="label">↩️</property>
-        <signal name="clicked" handler="on_enter_clicked"/>
+        <signal name="clicked" handler="on_operator_clicked"/>
         <layout>
           <property name="column">2</property>
           <property name="row">5</property>
