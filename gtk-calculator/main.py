@@ -15,12 +15,7 @@ class MainWindow(Gtk.ApplicationWindow):
         self.stack: list[Union[int, float]] = []
         self.value_complete: bool = False
 
-        callback_mapping = {
-            "on_number_clicked": self.on_number_clicked,
-            "on_operator_clicked": self.on_operator_clicked,
-            "on_clear_clicked": self.on_clear_clicked,
-        }
-        self.builder = Gtk.Builder(callback_mapping)
+        self.builder = Gtk.Builder(self)
         self.builder.add_from_file("layout.ui")
         grid = self.builder.get_object("grid")
         self.set_child(grid)
